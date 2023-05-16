@@ -1,0 +1,20 @@
+.form-container{
+    width: 400px;
+    margin: auto;
+    padding: 20px;
+    max-width: 100%;
+}
+.mat-mdc-form-field{
+    display: block;
+    width: 80%;
+    margin: auto;
+}
+.clear-btn{
+    background: #595B83;
+    color: white !important;
+}
+.filter-btn{
+    background-color: #F4ABC4;
+    float: right;
+    color: white !important;
+}

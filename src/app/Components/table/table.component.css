@@ -1,0 +1,44 @@
+.example-container {
+    height: 400px;
+    width: 850px;
+    margin: auto;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    max-width: 100%;
+    overflow: auto;
+  }
+  mdc-data-table__header-cell{
+    font-size: 18px !important;
+  }
+  
+
+  .mat-mdc-table .mdc-data-table__header-row {
+     background-color: #efc4d385;
+  }
+  
+  table {
+    width: 800px;
+  }
+  
+  td.mat-column-star {
+    width: 20px;
+    padding-right: 8px;
+  }
+  
+  th.mat-column-position, td.mat-column-position {
+    padding-left: 8px;
+  }
+  
+  .mat-mdc-table-sticky-border-elem-right {
+    border-left: 1px solid #e0e0e0;
+  }
+  
+  .mat-mdc-table-sticky-border-elem-left {
+    border-right: 1px solid #e0e0e0;
+  }
+  .fab-pos{
+    background: #F4ABC4;
+    position: fixed;
+    right: 20px;
+    bottom: 85px;
+  }
