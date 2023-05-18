@@ -6,7 +6,6 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Employees } from './../../Interface/employees';
 import { EmployeesService } from './../../Services/employees.service';
 import { FormComponent } from './../form/form.component';
-
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
@@ -17,7 +16,7 @@ export class TableComponent implements OnInit {
 	@Input() searchByKeyword!: string;
 
   constructor(public MatDialog: MatDialog ,private EmployeesService:EmployeesService){}
- 
+  // dataSource: any = (data as any).default;
   dataSource = new MatTableDataSource<Employees>([]);;
   employees: any[] = [];
   private paginator!: MatPaginator;
