@@ -1,4 +1,4 @@
 export const environment ={
-    BASEURL:"https://api.npoint.io/06c121e89679f2ae0bc5/",
+    BASEURL:"https://api.npoint.io/e2d84250d310bdf0973d/",
     // DB:"./db"
 }
