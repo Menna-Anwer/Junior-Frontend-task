@@ -1,5 +1,5 @@
 import { Component, ViewChild, OnInit, Input } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -12,13 +12,13 @@ import { FormComponent } from './../form/form.component';
   styleUrls: ['./table.component.css']
 })
 export class TableComponent implements OnInit {
-  @Input() groupFilters!: Object;
-	@Input() searchByKeyword!: string;
+  // @Input() groupFilters!: Object;
+	// @Input() searchByKeyword!: string;
 
-  constructor(public MatDialog: MatDialog ,private EmployeesService:EmployeesService){}
+  constructor(public MatDialog: MatDialog  ,private EmployeesService:EmployeesService){}
   // dataSource: any = (data as any).default;
   dataSource = new MatTableDataSource<Employees>([]);;
-  employees: any[] = [];
+  // employees: any[] = [];
   private paginator!: MatPaginator;
   private sort!:MatSort;
  
@@ -39,8 +39,20 @@ export class TableComponent implements OnInit {
   openDialog(): void{
     const dialogRef = this.MatDialog.open(FormComponent,{
       width:'400px',
-      data: {teacher: null}
     });
+    dialogRef.afterClosed().subscribe(res=>{
+      console.log(res);
+      
+      if(res){
+        this.dataSource.data =this.dataSource.data.filter(d => d.name===res.name && 
+          d.department===res.department && d.experience === res.experience && d.salary== res.salary)
+      }
+      else{
+        this.getEmployees()
+      }
+      console.log(this.dataSource.data);
+      
+    })
   }
 
   @ViewChild(MatSort) set matSort(ms: MatSort) {

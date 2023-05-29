@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialogRef } from '@angular/material/dialog';
 import { EmployeesService } from './../../Services/employees.service';
 @Component({
   selector: 'app-form',
@@ -7,8 +8,9 @@ import { EmployeesService } from './../../Services/employees.service';
   styleUrls: ['./form.component.css']
 })
 export class FormComponent implements OnInit {
-  constructor(private EmployeesService:EmployeesService) { }
-  @Output() autoSearch: EventEmitter<string> = new EventEmitter<string>();
+
+  constructor(private EmployeesService:EmployeesService ,public DialogRef:MatDialogRef<FormComponent>) { }
+  // @Output() autoSearch: EventEmitter<string> = new EventEmitter<string>();
 	@Output() groupFilters: EventEmitter<any> = new EventEmitter<any>();
  filterEmployeesTable!: FormGroup;
 
@@ -46,9 +48,15 @@ export class FormComponent implements OnInit {
     return this.filterEmployeesTable.controls['experience'].hasError('required')? 'You must enter a value': '';
   }
 
-  search(filters: any): void {
-    Object.keys(filters).forEach(key => filters[key] === '' ? delete filters[key] : key);
-    this.groupFilters.emit(filters);
+  search(): void {
+    let object = {
+      name:this.filterEmployeesTable.controls['name'].value,
+      //  employment_date:this.filterEmployeesTable.controls['employment_date'].value ,
+       experience:this.filterEmployeesTable.controls['experience'].value,
+       department:this.filterEmployeesTable.controls['department'].value ,
+       salary:this.filterEmployeesTable.controls['salary'].value}
+    // this.groupFilters.emit(object);
+    this.DialogRef.close(object)
   }
 
   clearAll(){

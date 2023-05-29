@@ -7,8 +7,8 @@ import { Observable, Subject } from 'rxjs';
   providedIn: 'root'
 })
 export class EmployeesService {
-  setGroupFilter$ = new Subject<any>();
-	getGroupFilter = this.setGroupFilter$.asObservable();
+  // setGroupFilter$ = new Subject<any>();
+	// getGroupFilter = this.setGroupFilter$.asObservable();
   constructor(private http:HttpClient) { }
   getAllEmployees(): Observable<any>{
     return this.http.get<Employees[]>(environment.BASEURL+"employees")
